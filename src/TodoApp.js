@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import useTodo from './hooks/useTodo';
-import {TodosProvider, TodosContext} from './context/todos.context';
+import {TodosProvider} from './context/todos.context';
 function TodoApp(){
     return (
         <Paper style={{

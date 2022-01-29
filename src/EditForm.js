@@ -5,13 +5,13 @@ import useInputState from './hooks/useInputState';
 import IconButton from '@material-ui/core/IconButton';
 import Close from '@material-ui/icons/Close';
 import ListItemSecondaryAction  from '@material-ui/core/ListItemSecondaryAction';
-import {TodosContext} from './context/todos.context';
+import {ReduceContext} from './context/todos.context';
 function EditForm({task, id, toggle}){
-    const {editTodo} = useContext(TodosContext);
+    const dispatch = useContext(ReduceContext)
     const [value_, handleChange, reset] = useInputState(task);
     const handleSubmit = (evt)=>{
         evt.preventDefault();
-        editTodo(id, value_);
+        dispatch({type: "EDIT", task:value_, id: id});
         reset();
         toggle();
     }

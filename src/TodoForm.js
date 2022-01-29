@@ -3,13 +3,14 @@ import React, {useContext} from 'react';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import useInputState from './hooks/useInputState';
-import {TodosContext} from './context/todos.context';
+import {ReduceContext} from './context/todos.context';
 function TodoForm(){
-    const {addTodo} = useContext(TodosContext);
+    const dispatch = useContext(ReduceContext);
     const [value_, handleChange, reset] = useInputState("");
     const handleSubmit = evt =>{
         evt.preventDefault();
-        addTodo(value_);
+        dispatch({type: "ADD", task: value_});
+        // addTodo(value_);
         reset();
     }
     return (<Paper style={{margin: "1rem 0", padding: "0 1rem"}}>
